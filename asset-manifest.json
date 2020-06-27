@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/chess-project/static/js/main.js",
+    "main.js.map": "/chess-project/static/js/main.js.map",
+    "index.html": "/chess-project/index.html",
+    "precache-manifest.a7675a7365d2ce8711b710c858dd7b02.js": "/chess-project/precache-manifest.a7675a7365d2ce8711b710c858dd7b02.js",
+    "service-worker.js": "/chess-project/service-worker.js"
+  },
+  "entrypoints": [
+    "static/js/main.js"
+  ]
+}
