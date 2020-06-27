@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/chess-project/index.html"
   },
   {
-    "revision": "b42311c4a505c2d1f77b",
+    "revision": "8ab43cb589a8de9a80f7",
     "url": "/chess-project/static/js/main.js"
   }
 ]);
