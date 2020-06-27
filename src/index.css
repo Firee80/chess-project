@@ -1,0 +1,90 @@
+.game-stats {
+    text-align: center;
+    --page-width: 37.5rem;
+}
+
+.game-stats > * {
+    display: inline-block;
+    width: var(--page-width);
+}
+
+.player {
+    text-align: center;
+}
+
+.player__block {
+    height: calc(var(--page-width) / 2);
+    position: relative;
+}
+
+.player__block-image-container {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.player__block-image {
+    height: 100%;
+}
+
+.player__block-bio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(black, #740979, black);
+    color: white;
+    text-transform: uppercase;
+}
+
+.player__stats-block {
+    display: inline-block;
+    width: calc((100% / 3) - 2px);
+    border: 1px solid #d9d9d9;
+    padding: 0.625rem 0;
+    background-color: ghostwhite;
+}
+
+.player__stats-block-text {
+    font-size: small;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.player__stats-block-number {
+    font-weight: bold;
+    font-size: x-large;
+    color: #39043c;
+}
+
+.stats-table__header,
+.stats-table__row {
+    display: flex;
+    text-align: center;
+}
+
+.stats-table__header-column {
+    flex: 1;
+    text-transform: uppercase;
+    color: gray;
+}
+
+.stats-table__row-column {
+    border: 1px solid #d9d9d9;
+    flex: 1;
+    padding: 5px;
+}
+
+.stats-table__row:nth-child(2n) {
+    background: #f8ebfd;
+}
+
+.stats-table__row:nth-child(2n+1) {
+    background-color: ghostwhite;
+}
