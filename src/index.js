@@ -6,6 +6,6 @@ renderComponent({
     container: document.querySelector('body'),
     Element: GameStats,
     params: {
-        player: window.location.pathname.replace('/', '') || 'firee80'
+        player: 'firee80'
     }
 })

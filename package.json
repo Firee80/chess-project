@@ -2,7 +2,9 @@
     "name": "chess-project",
     "version": "1.1.0",
     "private": true,
+    "homepage": "https://firee80.github.io/chess-project",
     "dependencies": {
+        "gh-pages": "^3.1.0",
         "highcharts": "^8.1.2",
         "html-react-parser": "^0.10.3",
         "lodash": "^4.17.15",
@@ -14,12 +16,12 @@
         "react-scripts": "3.2.0"
     },
     "scripts": {
+        "deploy": "gh-pages -d build",
         "start": "PORT=8124 react-app-rewired start",
-        "finalize": "mkdir -p ../dist && cp src/userscript-header.js ../dist/react-userscripts.user.js && cat build/static/js/main.js >> ../dist/react-userscripts.user.js",
-        "build": "react-app-rewired build && npm run finalize",
-        "debug-build": "react-app-rewired --inspect-brk=5858 build && npm run finalize",
+        "build": "react-app-rewired build",
         "test": "react-app-rewired test",
-        "eject": "react-app-rewired eject"
+        "eject": "react-app-rewired eject",
+        "predeploy": "npm run build"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -35,5 +37,15 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    }
+    },
+    "files": [
+        "static/js/main.js",
+        "asset-manifest.json",
+        "favicon.ico",
+        "index.html",
+        "manifest.json",
+        "player.png",
+        "robots.txt",
+        "service-worker.js"
+    ]
 }
