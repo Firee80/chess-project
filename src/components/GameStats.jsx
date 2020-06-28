@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import _ from 'lodash'
+import classnames from 'classnames'
 import charts from 'highcharts'
 import {getChartData, getMonthGroups} from '../util'
 import Player from "./Player";
 import StatsTable from "./StatsTable";
 
 export default function GameStats({player}) {
-    const {monthGroups} = getMonthGroups({player})
-    const elos = getChartData({player, monthGroups})
+    const [selectedPlayer, setSelectedPlayer] = useState('firee80')
+    const {monthGroups} = getMonthGroups({player: selectedPlayer})
+    const elos = getChartData({player: selectedPlayer, monthGroups})
 
     useEffect(() => {
         charts.chart('chart-container', {
@@ -26,11 +28,21 @@ export default function GameStats({player}) {
 
     return (
         <div className='game-stats'>
-            <Player player={player} />
+            <div className='game-stats__player'>
+                <span
+                    className={classnames({'game-stats_player--selected': selectedPlayer === 'firee80'})}
+                    onClick={() => setSelectedPlayer('firee80')}
+                >firee80</span>
+                <span
+                    className={classnames({'game-stats_player--selected': selectedPlayer === 'akusammakko'})}
+                    onClick={() => setSelectedPlayer('akusammakko')}
+                >akusammakko</span>
+            </div>
+            <Player player={selectedPlayer} />
             <figure>
                 <div id="chart-container">Chart</div>
             </figure>
-            <StatsTable player={player} monthGroups={monthGroups}/>
+            <StatsTable player={selectedPlayer} monthGroups={monthGroups}/>
         </div>
     )
 }
