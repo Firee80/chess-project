@@ -3,7 +3,7 @@
     "main.js": "/chess-project/static/js/main.js",
     "main.js.map": "/chess-project/static/js/main.js.map",
     "index.html": "/chess-project/index.html",
-    "precache-manifest.54765aac6cc64259913188bc7aefb8a1.js": "/chess-project/precache-manifest.54765aac6cc64259913188bc7aefb8a1.js",
+    "precache-manifest.59aa7075ebb343ade59ace815246ec0c.js": "/chess-project/precache-manifest.59aa7075ebb343ade59ace815246ec0c.js",
     "service-worker.js": "/chess-project/service-worker.js"
   },
   "entrypoints": [
