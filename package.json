@@ -18,7 +18,7 @@
     },
     "scripts": {
         "deploy": "gh-pages -d build",
-        "start": "PORT=8124 react-app-rewired start",
+        "start": "BROWSER=firefox PORT=8124 react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject",
@@ -38,15 +38,5 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    },
-    "files": [
-        "static/js/main.js",
-        "asset-manifest.json",
-        "favicon.ico",
-        "index.html",
-        "manifest.json",
-        "player.png",
-        "robots.txt",
-        "service-worker.js"
-    ]
+    }
 }

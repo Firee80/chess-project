@@ -1,14 +1,14 @@
 import React from 'react'
 import {getPlayerData} from "../util";
 
-export default function Player({player}) {
-    const {games, winPercentAvg, percentageAvg} = getPlayerData({player})
+export default function Player({player, games}) {
+    const {gameCount, winPercentAvg, percentageAvg} = getPlayerData({games})
 
     return (
         <div className='player'>
             <div className='player__block'>
                 <div className='player__block-image-container'>
-                    <img  className='player__block-image' src='player.png' alt=''/>
+                    <img className='player__block-image' src='player.png' alt=''/>
                 </div>
                 <div className='player__block-bio'>
                     <div className='player__block-bio-user'>{player}</div>
@@ -17,7 +17,7 @@ export default function Player({player}) {
             <div className='player__stats'>
                 <div className='player__stats-block'>
                     <div className='player__stats-block-text'>Pelit</div>
-                    <div className='player__stats-block-number'>{games}</div>
+                    <div className='player__stats-block-number'>{gameCount}</div>
                 </div>
                 <div className='player__stats-block'>
                     <div className='player__stats-block-text'>Voitto %</div>

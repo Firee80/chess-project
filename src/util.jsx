@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import moment from 'moment'
 import _ from 'lodash'
-import {chessGames} from './chess-games'
+import {akusammakko} from "./akusammakko"
+import {firee80} from "./firee80"
 
 export function renderElement({container, existingSelector, Element, params = {}}) {
     const existingNode = container.querySelector(existingSelector)
@@ -19,35 +19,22 @@ export function renderComponent({check = () => true, container, Element, params}
     check() && renderElement({container, Element, params})
 }
 
-function getLocalStorageGameData() {
-    if (chessGames) {
-        return chessGames
-    }
-
-    const data = window.localStorage.getItem('chessGames')
-    return data ? JSON.parse(data) : {}
-}
-
 export function getMonthGroups({player}) {
-    const existingData = getLocalStorageGameData()
-    const games = existingData[player.toLowerCase()]
-    const dates = Object.keys(games).map(key => games[key].white.date)
-    const monthGroups = _.groupBy(games, game => moment(game.white.date, 'YYYY-MM-DD').startOf('month').format('YYYY-MM'))
-
-    return {
-        firstDate: _.min(dates),
-        lastDate: _.max(dates),
-        monthGroups
+    switch (player) {
+        case 'firee80':
+            return firee80
+        case 'akusammakko':
+            return akusammakko
+        default:
+            return {}
     }
 }
 
-export function getChartData({player, monthGroups}) {
+export function getChartData({monthGroups}) {
     const dates = _.orderBy(Object.keys(monthGroups))
     return dates.map(date => {
         const games = monthGroups[date]
-        const all = games.map(game => [game.white, game.black]).flat()
-        const playerGames = all.filter(game => game.player.toLowerCase() === player)
-        const elos = playerGames.map(game => game.rating)
+        const elos = games.map(game => game.rating)
         const elo = _.sum(elos)/elos.length
 
         return {
@@ -57,11 +44,6 @@ export function getChartData({player, monthGroups}) {
             date
         }
     })
-}
-
-export function getPlayerGames({player, games}) {
-    const allGames = Object.keys(games).map(key => [games[key].white, games[key].black]).flat()
-    return allGames.filter(game => game.player.toLowerCase() === player)
 }
 
 export function getAverage({array, property, multipleByHundred = true}) {
@@ -82,14 +64,13 @@ export function getWhiteBlackAverage({array, property, multipleByHundred = true}
     }
 }
 
-export function getPlayerData({player}) {
-    const existingData = getLocalStorageGameData()
-    const games = existingData[player.toLowerCase()]
-    const playerGames = getPlayerGames({player, games})
+export function getPlayerData({games}) {
+    const ids = Object.keys(games)
+    const array = _.map(ids, id => games[id])
 
     return {
-        games: playerGames.length,
-        winPercentAvg: getAverage({array: playerGames, property: 'result'}),
-        percentageAvg: getAverage({array: playerGames, property: 'percentage', multipleByHundred: false})
+        gameCount: ids.length,
+        winPercentAvg: getAverage({array, property: 'result'}),
+        percentageAvg: getAverage({array, property: 'percentage', multipleByHundred: false})
     }
 }
